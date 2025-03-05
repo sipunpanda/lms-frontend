@@ -22,7 +22,7 @@ export const getAllCourses = createAsyncThunk("/course/get", async ()=>{
         )
         return (await response).data.courses;
     }catch(error){
-        toast.error(error?.response?.data?.message);
+        toast.error((error?.response?.data?.message) || "Please Login" );
     }
  });
 
