@@ -22,7 +22,7 @@ function Homepage() {
                         </Link>
 
                         <Link to="/contact">
-                            <button className="px-5 py-3  text-white border border-yellow-500 hover:bg-yellow-600 rounded-xl font-semibold text-lg md:text-xl w-full sm:w-auto shadow-lg transition-all">
+                            <button className="px-5 py-3  text-yellow-500 border border-yellow-500 hover:bg-yellow-600 hover:text-white rounded-xl font-semibold text-lg md:text-xl w-full sm:w-auto shadow-lg transition-all">
                                 Contact Us
                             </button>
                         </Link>
