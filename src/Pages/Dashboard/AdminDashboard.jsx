@@ -12,6 +12,8 @@ import { deleteCourse, getAllCourses } from "../../Redux/Slices/CourseSlice";
 import { getPaymentRecord } from "../../Redux/Slices/RazorpaySlice";
 import { getStatsData } from "../../Redux/Slices/StatSlice";
 
+import Swal from "sweetalert2";
+
 ChartJS.register(ArcElement, BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
 function AdminDashboard() {
@@ -22,14 +24,50 @@ function AdminDashboard() {
     const { allPayments, monthlySalesRecord } = useSelector((state) => state.razorpay);
     const myCourses = useSelector((state) => state?.course?.courseData);
 
+    // async function onCourseDelete(id) {
+    //     if (window.confirm("Are you sure you want to delete the course?")) {
+    //         const res = await dispatch(deleteCourse(id));
+    //         if (res?.payload?.success) {
+    //             await dispatch(getAllCourses());
+    //         }
+    //     }
+    // }
+
+
     async function onCourseDelete(id) {
-        if (window.confirm("Are you sure you want to delete the course?")) {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#ff4d4d", // Custom Red Button
+          cancelButtonColor: "#4CAF50", // Custom Green Button
+          confirmButtonText: "Yes, delete it!",
+          background: "#1E293B", // Dark gray background
+          color: "#ffffff", // White text color
+          customClass: {
+            popup: "rounded-xl shadow-lg",
+            title: "text-yellow-400 text-2xl font-bold", // Yellow Title
+            confirmButton: "bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded",
+            cancelButton: "bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-2 rounded",
+          },
+        }).then(async (result) => {
+          if (result.isConfirmed) {
             const res = await dispatch(deleteCourse(id));
             if (res?.payload?.success) {
-                await dispatch(getAllCourses());
+              await dispatch(getAllCourses());
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your course has been deleted.",
+                icon: "success",
+                background: "#1E293B", // Keep dark theme for success
+                color: "#ffffff",
+              });
             }
-        }
-    }
+          }
+        });
+      }
+    
 
     useEffect(() => {
         (async () => {
