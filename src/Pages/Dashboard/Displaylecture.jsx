@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { deleteCourseLecture, getCourseLecture } from "../../Redux/Slices/LectureSlice";
 import HomeLayout from "../../Layouts/HomeLayout";
+import VideoPlayer from "../../Components/VideoPlayer";
 
 const DisplayLectures = () => {
   const dispatch = useDispatch();
@@ -39,14 +40,15 @@ const DisplayLectures = () => {
           {/* Left Section - Video Player */}
           <div className="w-full md:w-[60%] p-4 rounded-lg shadow-lg bg-zinc-800">
             <div className="relative group overflow-hidden rounded-lg">
-              <video
+              {/* <video
                 className="object-fill rounded-lg w-full shadow-md transition-all duration-300 group-hover:shadow-xl"
                 src={lectures && lectures[currentVideoIndex]?.lecture?.secure_url}
                 controls
                 disablePictureInPicture
                 muted
                 controlsList="nodownload"
-              ></video>
+              ></video> */}
+              <VideoPlayer lectures={lectures} currentVideoIndex={currentVideoIndex} />
             </div>
             <div className="mt-4 space-y-2 text-lg">
               <h1>

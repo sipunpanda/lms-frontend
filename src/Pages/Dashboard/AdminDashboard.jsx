@@ -164,7 +164,7 @@ function AdminDashboard() {
                                         <td className="py-3 px-2">{course.category}</td>
                                         <td className="py-3 px-2">{course.createdBy}</td>
                                         <td className="py-3 px-2 text-center">{course.numbersOfLectures}</td>
-                                        <td className="py-3 px-2 flex gap-3">
+                                        <td className="py-3 px-2 flex gap-3 justify-center">
                                             <button onClick={() => navigate("/course/displaylectures", { state: { ...course } })} className="bg-green-500 hover:bg-green-600 text-xl py-2 px-4 rounded-md transition">
                                                 <BsCollectionPlayFill />
                                             </button>

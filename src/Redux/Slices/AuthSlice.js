@@ -12,15 +12,15 @@ const initialState = {
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
     try {
-        console.log("hi",data);
+        // console.log("hi",data);
         
         const res = axiosInstance.post('user/register', data);
-        console.log("hi2",res);
+        // console.log("hi2",res);
         toast.promise(
             res, {
             loading: "Wait creating Your Account",
            success: (response) => {
-                    console.log("Account created successfully:", response.data);
+                    // console.log("Account created successfully:", response.data);
                     return response.data.message || "Account created successfully!";
                 },
             error: "Could not create your account"
@@ -42,16 +42,16 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
 
 export const login = createAsyncThunk("/auth/login", async (data,  { rejectWithValue }) => {
     try {
-        console.log("hi",data);
+        // console.log("hi",data);
        
         
         const res =  axiosInstance.post('user/login', data);
-        console.log("hi2",res);
+        // console.log("hi2",res);
         await toast.promise(
           res, {
             loading: "Wait authentication in progress...",
             success: (data) => {
-                console.log("data",data);
+                // console.log("data",data);
                 
                 return data?.data?.message;
             },
@@ -102,7 +102,7 @@ export const logout = createAsyncThunk("/auth/logout", async () => {
 // function to fetch user data
 export const getUserData = createAsyncThunk("/user/details", async () => {
     try {
-      console.log("hi");
+      // console.log("hi");
       const res = await axiosInstance.get('/user/me');
       
       return res?.data;
