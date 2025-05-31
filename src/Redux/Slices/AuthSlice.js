@@ -117,7 +117,8 @@ export const changePassword = createAsyncThunk(
     "/auth/changePassword",
     async (userPassword) => {
       try {
-        let res = axiosInstance.post("/user/change-password", userPassword);
+        let {userID, password} = userPassword
+        let res = axiosInstance.post('/user/update-password', {password:password});
   
         await toast.promise(res, {
           loading: "Loading...",

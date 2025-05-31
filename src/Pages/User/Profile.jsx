@@ -63,7 +63,7 @@ const Profile = () => {
               to={
                 userData?.email === "test@gmail.com"
                   ? "/denied"
-                  : "/changepassword"
+                  : "/user/changepassword"
               }
               className="w-1/2 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 rounded-md py-2 font-semibold text-center shadow-md"
             >
