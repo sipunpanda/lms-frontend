@@ -39,14 +39,14 @@ export const verifyUserPayment = createAsyncThunk(
   "/verifyPayment",
   async (paymentDetail) => {
     try {
-      const res = await axiosInstance.post("/payments/verify", {
+      const res = await axiosInstance.post("/payments/verify-subscription", {
         razorpay_payment_id: paymentDetail.razorpay_payment_id,
         razorpay_subscription_id: paymentDetail.razorpay_subscription_id,
         razorpay_signature: paymentDetail.razorpay_signature,
       });
       return res?.data;
     } catch (error) {
-      toast.error("error?.response?.data?.message");
+      toast.error(error?.response?.data?.message);
     }
   }
 );
